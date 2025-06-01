@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><button class="nav-btn active" data-section="goals">Goals</button></li>
+            <li><button class="nav-btn" data-section="daily-quests">Daily Quests</button></li>
+            <li><button class="nav-btn" data-section="friends">Friends</button></li>
+            <li><button class="nav-btn" data-section="leaderboard">Leaderboard</button></li>
+            <li><button class="nav-btn" data-section="store">Store</button></li>
+            <li><button class="nav-btn" data-section="inventory">Inventory</button></li>
+            <li><button class="nav-btn" data-section="chat">Chat</button></li>
+            <li><button class="nav-btn" data-section="profile">Profile</button></li>
+        </ul>
+    </nav>
+
+    <!-- Character Playground (Always visible at bottom) -->
+    <div class="character-playground">
+        <div class="character-ground"></div>
+        <div id="user-character" class="pixel-character character-default"></div>
+        <div id="friend-characters"></div>
+    </div>
+
+    <!-- Goals Section -->
+    <div id="goals" class="section active">
+        <h2>My Goals</h2>
+        <div class="add-goal">
+            <input type="text" id="goal-input" placeholder="Enter your goal...">
+            <button id="add-goal-btn">Add Goal</button>
+        </div>
+        <div id="goals-list">
+            <!-- Goals will be added here -->
+        </div>
+    </div>
+
+    <!-- Daily Quests Section -->
+    <div id="daily-quests" class="section">
+        <h2>Daily Quests</h2>
+        <div class="quests-list">
+            <div class="quest-item">
+                <span>Complete 3 goals</span>
+                <button class="claim-btn" data-reward="50">Claim 50 coins</button>
+            </div>
+            <div class="quest-item">
+                <span>Add 2 friends</span>
+                <button class="claim-btn" data-reward="30">Claim 30 coins</button>
+            </div>
+            <div class="quest-item">
+                <span>Reach level 2</span>
+                <button class="claim-btn" data-reward="100">Claim 100 coins</button>
+            </div>
+        </div>
+        </div>
+
+    <!-- Friends Section -->
+        <div id="friends" class="section">
+            <h2>Friends</h2>
+        <div class="add-friend">
+            <input type="text" id="friend-input" placeholder="Enter friend's name">
+            <button id="add-friend-btn">Add Friend</button>
+        </div>
+            <div class="friends-list">
+            <!-- Demo friends -->
+            <div class="friend-card">
+                <div class="friend-avatar character-ninja">
+                    <span>N</span>
+                </div>
+                <div class="friend-info">
+                    <h3>Ninja Friend</h3>
+                    <p>Level 3</p>
+                </div>
+            </div>
+            <div class="friend-card">
+                <div class="friend-avatar character-robot">
+                    <span>R</span>
+                </div>
+                <div class="friend-info">
+                    <h3>Robot Friend</h3>
+                    <p>Level 2</p>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <!-- Leaderboard Section -->
+        <div id="leaderboard" class="section">
+            <h2>Leaderboard</h2>
+            <div class="leaderboard-list">
+            <!-- Demo leaderboard -->
+            <div class="leaderboard-item">
+                <span class="rank">1</span>
+                <span class="name">Ninja Friend</span>
+                <span class="points">300 pts</span>
+            </div>
+            <div class="leaderboard-item">
+                <span class="rank">2</span>
+                <span class="name">You</span>
+                <span class="points">250 pts</span>
+            </div>
+            <div class="leaderboard-item">
+                <span class="rank">3</span>
+                <span class="name">Robot Friend</span>
+                <span class="points">200 pts</span>
+            </div>
+            </div>
+        </div>
+
+    <!-- Store Section with More Characters -->
+    <div id="store" class="section">
+        <h2>Character Store</h2>
+        <div class="coins-display">
+            Your Coins: <span id="coin-count">0</span>
+        </div>
+        <div class="store-category-items">
+            <!-- Default Characters -->
+            <div class="character-store-item">
+                <div class="character-preview character-default"></div>
+                <h3 class="item-name">Basic Character</h3>
+                <p class="item-description">Your starter character</p>
+                <button disabled>Owned</button>
+            </div>
+            
+            <div class="character-store-item">
+                <div class="character-preview character-ninja"></div>
+                <h3 class="item-name">Ninja</h3>
+                <p class="item-description">Swift and stealthy</p>
+                <button class="buy-btn" data-character="ninja" data-price="100">Buy for 100 coins</button>
+            </div>
+            
+            <div class="character-store-item">
+                <div class="character-preview character-robot"></div>
+                <h3 class="item-name">Robot</h3>
+                <p class="item-description">Mechanical companion</p>
+                <button class="buy-btn" data-character="robot" data-price="150">Buy for 150 coins</button>
+            </div>
+
+            <!-- New Characters -->
+            <div class="character-store-item">
+                <div class="character-preview character-wizard"></div>
+                <h3 class="item-name">Wizard</h3>
+                <p class="item-description">Master of magic</p>
+                <button class="buy-btn" data-character="wizard" data-price="200">Buy for 200 coins</button>
+            </div>
+
+            <div class="character-store-item">
+                <div class="character-preview character-knight"></div>
+                <h3 class="item-name">Knight</h3>
+                <p class="item-description">Brave warrior</p>
+                <button class="buy-btn" data-character="knight" data-price="250">Buy for 250 coins</button>
+            </div>
+
+            <div class="character-store-item">
+                <div class="character-preview character-alien"></div>
+                <h3 class="item-name">Alien</h3>
+                <p class="item-description">Space explorer</p>
+                <button class="buy-btn" data-character="alien" data-price="300">Buy for 300 coins</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inventory Section -->
+    <div id="inventory" class="section">
+        <h2>My Characters</h2>
+        <div class="inventory-category">
+            <h4>Owned Characters</h4>
+            <div class="inventory-items">
+                <div class="inventory-item">
+                    <div class="character-preview character-default"></div>
+                    <p>Basic Character</p>
+                    <button class="use-btn" data-character="default">Use</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Room Section -->
+    <div id="chat" class="section">
+        <h2>Chat Room</h2>
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Demo messages -->
+                <div class="chat-message received">
+                    <span class="chat-name">Ninja Friend</span>
+                    <p>Hello everyone! 👋</p>
+                </div>
+                <div class="chat-message sent">
+                    <span class="chat-name">You</span>
+                    <p>Hi there! How's everyone doing?</p>
+                </div>
+                <div class="chat-message received">
+                    <span class="chat-name">Robot Friend</span>
+                    <p>Beep boop! All systems operational! 🤖</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button id="send-message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+        <div id="profile" class="section">
+        <h2>My Profile</h2>
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                <span>😊</span>
+                    </div>
+                    <div class="profile-info">
+                <h3>Stats</h3>
+                <p id="profile-level">Level: 1</p>
+                <p id="profile-exp">Experience: 0/100</p>
+                <p id="profile-coins">Coins: 0</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Remove theme-related code
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(button.dataset.section).classList.add('active');
+            });
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        // Character Store
+        document.querySelectorAll('.buy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const character = button.dataset.character;
+                const price = parseInt(button.dataset.price);
+                const currentCoins = parseInt(document.getElementById('coin-count').textContent);
+
+                if (currentCoins >= price) {
+                    const inventoryItems = document.querySelector('.inventory-items');
+                    const newCharacter = document.createElement('div');
+                    newCharacter.className = 'inventory-item';
+                    newCharacter.innerHTML = `
+                        <div class="character-preview character-${character}"></div>
+                        <p>${character.charAt(0).toUpperCase() + character.slice(1)}</p>
+                        <button class="use-btn" data-character="${character}">Use</button>
+                    `;
+                    inventoryItems.appendChild(newCharacter);
+                    document.getElementById('coin-count').textContent = currentCoins - price;
+                    button.disabled = true;
+                    button.textContent = 'Owned';
+                } else {
+                    alert('Not enough coins!');
+                }
+            });
+        });
+
+        // Character Selection with improved animation
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('use-btn')) {
+                const character = e.target.dataset.character;
+                const playground = document.querySelector('#user-character');
+                
+                // Remove all character classes and add new one
+                playground.className = 'pixel-character';
+                playground.classList.add(`character-${character}`);
+
+                // Reset animation
+                playground.style.animation = 'none';
+                playground.offsetHeight; // Trigger reflow
+                playground.style.animation = 'jump 0.5s ease, idle 1s infinite alternate';
+            }
+        });
+
+        // Add friend characters that walk around
+        function addFriendCharacter(character, position) {
+            const friendChar = document.createElement('div');
+            friendChar.className = `pixel-character character-${character}`;
+            friendChar.style.left = `${position}%`;
+            document.getElementById('friend-characters').appendChild(friendChar);
+        }
+
+        // Add demo friends
+        setTimeout(() => {
+            addFriendCharacter('ninja', 20);
+            addFriendCharacter('robot', 70);
+        }, 1000);
+
+        // Daily Quest Claims
+        document.querySelectorAll('.claim-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                if (!button.disabled) {
+                    const reward = parseInt(button.dataset.reward);
+                    const currentCoins = parseInt(document.getElementById('coin-count').textContent);
+                    document.getElementById('coin-count').textContent = currentCoins + reward;
+                    button.disabled = true;
+                    button.textContent = 'Claimed';
+                }
+            });
+        });
+
+        // Add Friend
+        document.getElementById('add-friend-btn')?.addEventListener('click', () => {
+            const input = document.getElementById('friend-input');
+            if (input.value.trim()) {
+                const friendsList = document.querySelector('.friends-list');
+                const newFriend = document.createElement('div');
+                newFriend.className = 'friend-card';
+                newFriend.innerHTML = `
+                    <div class="friend-avatar character-default">
+                        <span>${input.value[0].toUpperCase()}</span>
+                    </div>
+                    <div class="friend-info">
+                        <h3>${input.value}</h3>
+                        <p>Level 1</p>
+                    </div>
+                `;
+                friendsList.appendChild(newFriend);
+                
+                // Add friend character to playground
+                addFriendCharacter('default', Math.random() * 80 + 10);
+                
+                input.value = '';
+            }
+        });
+
+        // Initial coins
+        document.getElementById('coin-count').textContent = '200';
+    </script>
+</body>
+</html> 
